@@ -1,19 +1,84 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
+<div class="mx-auto"style="width: 700px;">
+  <div class="progress">
+    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50 ％</div>
+  </div>
+    <h2>会員情報の入力</h2>
+    
+    <div class="card bg-light ">
+            <div class="col-14">
+              <div class="card-header">アカウント情報</div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        
+           <div class="row"> 
+            <div class="col">
+              <div class="field">
+                <%= f.label :last_name, "姓" %>
+                <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control", placeholder: "山田" %>
+              </div>
+            </div>
+            <div class="col">
+              <div class="field">
+                <%= f.label :first_name, "名" %>
+                <%= f.text_field :first_name, autocomplete: "first_name", class: "form-control", placeholder: "太郎" %>
+              </div>
+            </div>
+          </div>
+          <div class="row"> 
+            <div class="col">
+              <div class="field">
+                <%= f.label :last_name, "セイ" %>
+                <%= f.text_field :last_name, autocomplete: "last_name", class: "form-control", placeholder: "ヤマダ" %>
+              </div>
+            </div>
+            <div class="col">
+              <div class="field">
+                <%= f.label :first_name, "メイ" %>
+                <%= f.text_field :first_name, autocomplete: "first_name", class: "form-control", placeholder: "タロウ" %>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <%= f.label :postcode %><br />
+            <%= f.number_field :postcode, autocomplete: "postcode", class: "form-control", placeholder: "郵便番号" %>
+          </div>
+          <div class="field">
+            <%= f.label :prefecture_code %><br />
+            <%= f.text_field :prefecture_code, autocomplete: "prefecture_code", class: "form-control", collection: JpPrefecture::Prefecture.all, :value_method => :name,include_blank: '都道府県', placeholder: "郵便番号" %>
+          </div>
+          
+          <%= f.text_field :postcode %>
+  <%= f.text_field :prefecture_code, collection: JpPrefecture::Prefecture.all, :value_method => :name, include_blank: '都道府県' %>
+  <%= f.text_field :address_city %>
+  <%= f.text_field :address_street %>
+  <%= f.text_field :address_building %>
+  <%= f.button :submit %>
+          
+          
+          
+  
+        <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+    </div>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-  </div>
-
- 
+  
+  
+  <!--<p>zip code</p>-->
+  <!-- form.integer_field :postcode -->
+  <!--<p>prefecture</p>-->
+  <!-- form.text_field :prefecture_code, collection: JpPrefecture::Prefecture.all, :value_method => :name, include_blank: '都道府県' <br>-->
+  
+  
+  
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
@@ -23,9 +88,13 @@
     <%= f.submit "Update" %>
   </div>
 <% end %>
-
+</div>
+</div>
+</div>
 <h3>Cancel my account</h3>
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+<script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>

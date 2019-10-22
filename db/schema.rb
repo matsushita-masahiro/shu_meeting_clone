@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191021140115) do
+ActiveRecord::Schema.define(version: 20191022084850) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -23,11 +23,11 @@ ActiveRecord::Schema.define(version: 20191021140115) do
     t.string   "last_name_kana"
     t.string   "first_name_kana"
     t.string   "icon"
-    t.string   "zip"
-    t.string   "prefecture"
-    t.string   "city"
-    t.string   "addr1"
-    t.string   "addr2"
+    t.integer  "postcode"
+    t.integer  "prefecture_code"
+    t.string   "address_city"
+    t.string   "address_street"
+    t.string   "address_building"
     t.string   "college"
     t.string   "major"
     t.string   "gender"
