@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200127110639) do
+ActiveRecord::Schema.define(version: 20200216095650) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "inquiry_id"
@@ -120,8 +120,6 @@ ActiveRecord::Schema.define(version: 20200127110639) do
     t.string   "last_name_kana"
     t.string   "first_name_kana"
     t.string   "icon"
-    t.integer  "postcode"
-    t.integer  "prefecture_code"
     t.string   "address_city"
     t.string   "address_street"
     t.string   "address_building"
@@ -136,6 +134,8 @@ ActiveRecord::Schema.define(version: 20200127110639) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.integer  "postcode"
+    t.integer  "prefecture_code"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
