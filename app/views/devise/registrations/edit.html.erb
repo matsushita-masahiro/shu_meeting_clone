@@ -1,100 +1,185 @@
-<div class="mx-auto"style="width: 700px;">
+<div class="mx-auto">
   <div class="progress">
-    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50 ％</div>
+    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50 %</div>
   </div>
     <h2>会員情報の入力</h2>
-    
-    <div class="card bg-light ">
-            <div class="col-14">
-              <div class="card-header">アカウント情報</div>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
-        
-           <div class="row"> 
-            <div class="col">
-              <div class="field">
-                <%= f.label :last_name, "姓" %>
-                <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control", placeholder: "山田" %>
-              </div>
-            </div>
-            <div class="col">
-              <div class="field">
-                <%= f.label :first_name, "名" %>
-                <%= f.text_field :first_name, autocomplete: "first_name", class: "form-control", placeholder: "太郎" %>
-              </div>
-            </div>
-          </div>
-          <div class="row"> 
-            <div class="col">
-              <div class="field">
-                <%= f.label :last_name, "セイ" %>
-                <%= f.text_field :last_name, autocomplete: "last_name", class: "form-control", placeholder: "ヤマダ" %>
-              </div>
-            </div>
-            <div class="col">
-              <div class="field">
-                <%= f.label :first_name, "メイ" %>
-                <%= f.text_field :first_name, autocomplete: "first_name", class: "form-control", placeholder: "タロウ" %>
-              </div>
-            </div>
-          </div>
-          <div class="field">
-            <%= f.label :postcode %><br />
-            <%= f.number_field :postcode, autocomplete: "postcode", class: "form-control", placeholder: "郵便番号" %>
-          </div>
-          <div class="field">
-            <%= f.label :prefecture_code %><br />
-            <%= f.text_field :prefecture_code, autocomplete: "prefecture_code", class: "form-control", collection: JpPrefecture::Prefecture.all, :value_method => :name,include_blank: '都道府県', placeholder: "郵便番号" %>
-          </div>
-          
-          <%= f.text_field :postcode %>
-  <%= f.text_field :prefecture_code, collection: JpPrefecture::Prefecture.all, :value_method => :name, include_blank: '都道府県' %>
-  <%= f.text_field :address_city %>
-  <%= f.text_field :address_street %>
-  <%= f.text_field :address_building %>
-  <%= f.button :submit %>
-          
-          
-          
-  
-        <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-    </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  
-  
-  <!--<p>zip code</p>-->
-  <!-- form.integer_field :postcode -->
-  <!--<p>prefecture</p>-->
-  <!-- form.text_field :prefecture_code, collection: JpPrefecture::Prefecture.all, :value_method => :name, include_blank: '都道府県' <br>-->
-  
-  
-  
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+      <div class="card bg-light ">
+        <div class="col-14">
+          <div class="card-header">
+              <p><span class="badge badge-danger">必須</span>は必ず入力してください。</p>
+           </div>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+            <table>
+             <tr>
+              <th>プロフィール画像</th>
+               <td>
+                <div class="form-row justify-content-center">
+                      <%= image_tag '/assets/icon.png', class: "user-icon", id: "preview" %>
+                     <div class=".col-4">
+                      <%= f.file_field :icon, id: "myImage", accept: "image/*" %>
+                     </div>
+                </div>
+               </td>
+             </tr>
+             <tr>
+              <th>ユーザ名　<span class="badge badge-danger">必須</span></th>
+               <td>
+                <div class="form-row justify-content-center">
+                     <div class="col-8">
+                      <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "form-control", placeholder: "例）やまちゃん", required: true  %>
+                     </div>
+                </div>
+               </td>
+             </tr>
+             <tr>
+              <th>メールアドレス　<span class="badge badge-danger">必須</span></th>
+               <td>
+                <div class="form-row justify-content-center">
+                     <div class="col-8">
+                       <%= f.text_field :email, autocomplete: "email", class: "form-control", placeholder: "text@gmail.com", required: true  %>
+                     </div>
+                </div>
+               </td>
+             </tr>
+             <tr>
+             <tr>
+              <th>お名前　<span class="badge badge-danger">必須</span></th>
+               <td>
+                <div class="form-row justify-content-center">
+                      <%= f.label :last_name, "姓" %> 
+                     <div class=".col-4">
+                      <%= f.text_field :last_name, autocomplete: "last_name", class: "form-control", placeholder: "山田", required: true  %>
+                     </div>
+                      <%= f.label :first_name, "名" %>
+                     <div class=".col-4">
+                      <%= f.text_field :first_name, autocomplete: "first_name", class: "form-control", placeholder: "太郎", required: true  %>
+                     </div>
+                </div>
+               </td>
+             </tr>
+             <tr>
+              <th>お名前(フリガナ) <span class="badge badge-danger">必須</span></th>
+               <td>
+                <div class="form-row justify-content-center">
+                      <%= f.label :last_name_kana, "ｾｲ" %> 
+                     <div class=".col-4">
+                      <%= f.text_field :last_name_kana, autocomplete: "last_name_kana", class: "form-control", placeholder: "ヤマダ", required: true  %>
+                     </div>
+                      <%= f.label :first_name_kana, "ﾒｲ" %> 
+                     <div class=".col-4">
+                      <%= f.text_field :first_name_kana, autocomplete: "first_name_kana", class: "form-control", placeholder: "タロウ", required: true  %>
+                     </div>
+                </div>
+              </td>
+             </tr>
+             <tr>
+               <th>性別　<span class="badge badge-danger">必須</span></th>
+                <td>
+                  <div class="form-row justify-content-center">
+                     <div class=".col-4">
+                      <%= f.radio_button :gender, "男", checked: true %><%= f.label :sex_1, "男"%>
+                      </div>
+                      <div class=".col-4">
+                      <%= f.radio_button :gender, "女" %><%= f.label :sex_2, "女" %>
+                      </div>
+                      <div class=".col-4">
+                      <%= f.radio_button :gender, "その他" %><%= f.label :sex_3, "その他" %>
+                      </div>
+                  </div>
+                 </td>
+             </tr>
+             <tr>
+              <th>住所　<span class="badge badge-danger">必須</span></th>
+               <td>
+                 <div class="form-row justify-content-left">
+                 <%= f.label :postcode, "郵便番号", style: "margin-left:58px" %><br />
+                 <div class="col-4">
+                 <%= f.text_field :postcode, autocomplete: "postcode", class: "form-control", required: true, placeholder: "1500021"%><hr>
+                 </div>
+                 </div>
+                 <div class="form-row justify-content-center">
+                 <%= f.label :prefecture_name, "都道府県" %><br />
+                 <div class="col-8">
+                 <%= f.collection_select :prefecture_name, JpPrefecture::Prefecture.all, :name, :name, {:prompt =>"都道府県を選択してください"}, {autocomplete: "prefecture_code", class: "form-control", required: true} %><hr>
+                 </div>
+                 </div>
+                 <div class="form-row justify-content-center">
+                 <%= f.label :address_city, "市町村区" %><br />
+                 <div class="col-8">
+                 <%= f.text_field :address_city, autocomplete: "address_city", class: "form-control", required: true, placeholder: "渋谷区"%><hr>
+                 </div>  
+                 </div> 
+                 <div class="form-row justify-content-center">
+                 <%= f.label :address_street, "番地名　" %><br />
+                 <div class="col-8">     
+                 <%= f.text_field :address_street, autocomplete: "address_street", class: "form-control", required: true, placeholder: "恵比寿西1-2-3" %>
+                 </div> 
+                 </div> 
+                 <div class="form-row justify-content-center">
+                 <%= f.label :address_building, "ビル名　"%><br />
+                 <div class="col-8">     
+                 <%= f.text_field :address_building, autocomplete: "address_building", class: "form-control", placeholder: "OOビル 123" %>   
+                 </div> 
+                 </div>
+               </td>
+              </tr>
+              <tr>
+                <th>大学情報　<span class="badge badge-secondary">任意</span></th>
+                  <td>
+                    <div class="form-row justify-content-center">
+                          <%= f.label :college, "　大学名" %>
+                          <div class="col-8">
+                          <%= f.text_field :college, autocomplete: "college", class: "form-control", placeholder: "東京大学"  %>
+                          </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                          <%= f.label :major, "　　専攻" %>
+                          <div class="col-8">
+                          <%= f.select :major,{文学部: "文学部", 教育学部: "教育学部",社会学部: "社会学部", 人間科学部: "人間科学部", 心理学部: "心理学部", 外国語学部: "外国語学部", 国際学部: "国際学部", 法学部: "法学部", 経済学部: "経済学部", 経営学部: "経営学部", 商学部: "商学部",理学部: "理学部",工学部: "工学部",情報学部: "情報学部", 医学部: "医学部", 薬学部: "薬学部", 歯学部: "歯学部", 看護学部: "看護学部", 保健学部: "保健学部", 福祉学部: "福祉学部", 獣医学部: "獣医学部", 生物学部: "生物学部", 農学部: "農学部", 栄養学部: "栄養学部", 家政学部: "家政学部", 美術学部: "美術学部", 体育学部: "体育学部", 音楽学部: "音楽学部"}, { :prompt =>"学部を選択してください"}, {autocomplete: "major", class: "form-control" } %>
+                          </div>
+                    </div>
+                  </td>
+              </tr>
+           </table>
+           <%= f.hidden_field :password, :value => "" %>
+           <%= f.hidden_field :password_confirmation, :value => "" %>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+        <div class="form-row justify-content-center">
+          <div class="actions">
+            <%= f.submit "確認画面へ", class: "btn btn-info btn-lg btn-block" %>
+          </div>
+        </div>
+       <% end %>
+   </div>
   </div>
-<% end %>
+     <%= link_to "アカウント情報の削除", delete_path, :style=>"color:red;"%>
+     <%= link_to "トップに戻る", :back %>
 </div>
-</div>
-</div>
-<h3>Cancel my account</h3>
+  
+  
+<script>
+$(function() {
+  return $("#user_postcode").jpostal({
+    postcode: ["#user_postcode"],
+    address: {
+      "#user_prefecture_code": "%3",
+      "#user_address_city": "%4",
+      "#user_address_street": "%5%6%7"
+    }
+  });
+});
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+$('#myImage').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $("#preview").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+});
+</script>
+         
+       
+           
 
-<%= link_to "Back", :back %>
-<script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"></script>
-<script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>
+

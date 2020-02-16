@@ -27,9 +27,24 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
-
-  config.action_mailer.perform_caching = false
+  # config.action_mailer.delivery_method = :letter_opener_web
+  
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_caching = true                             
+  config.action_mailer.default_url_options = { protocol: 'https' , host: 'd579a04433554d05ba2ec0a5f6c2f166.vfs.cloud9.ap-northeast-1.amazonaws.com/' }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    port:                 587,
+    address:              'smtp.gmail.com',
+    domain:               'gmail.com',
+    user_name:            'textore.info@gmail.com',
+    # ENV['USER_EMAIL'],
+    password:            'ruyhhoxqgxmwsyhx',
+    # ENV['USER_EMAIL'],
+    authentication:       'login',
+    enable_starttls_auto: true
+    }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+ 
+ 
+ ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:red;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:red;
+}
+::placeholder{ /* Others */
+ color:red;
+}
+ 
+ 

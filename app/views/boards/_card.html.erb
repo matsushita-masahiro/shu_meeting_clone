@@ -1,0 +1,28 @@
+<div class="card one-post">
+  <div class="card-body">
+       <p><%= @board.title %></p>
+        <%= render "boards/content"  %>
+    <div class="row justify-content-center">
+        <button type="button" class="btn btn-warning btn-lg btn-block">この本をレンタルする</button>
+    </div>
+     <div class="box-area">
+         <strong>概要</strong>
+          <p><%= @board.remarks %></p>
+　　　</div>       
+    
+    
+   <div class="row">
+      <% if user_signed_in? %>
+        <% if current_user.already_liked?(@board) %>
+        　<%= button_to 'お気に入りから外す', board_favorite_path(@board), method: :delete, class:"btn btn-outline-info btn-sm" %> 
+     　 <% else %>
+          <%= button_to 'お気に入り ♡︎', board_favorites_path(@board), class: "btn btn-outline-danger btn-sm" %>
+        <% end %>
+      <% end %>
+        
+        <span class="favorite-count">お気に入り件数: <%= @board.favorites.count %></span> 
+        <%= render "boards/sns-btn"  %>
+      
+    </div>
+   </div>
+</div>

@@ -1,0 +1,46 @@
+<hr>
+  <div class="board-comment">
+    <% @board_messages.each do |message| %>
+     <div class="balloon1">
+       <div class="icon">
+           <% if User.find_by(id: message.user_id).icon.present? %>
+              <%= image_tag User.find_by(id: message.user_id).icon, class: "balloon-icon" %>
+           <% else %>
+              <%= image_tag "/assets/icon.png", class: "balloon-icon" %>
+           <% end %>
+        <div class="comment-writer">
+           <p><%= User.find_by(id: message.user_id).username %></p>
+        </div>
+        </div>
+         <p><%= simple_format(message.content)%></p>
+                 <% if current_user.id == message.user_id || current_user.id == 1 %>
+                    <%= link_to "/board_messages/#{message.id}", method: :delete, data: { confirm: "本当にメッセージを削除しますか？" } do %>
+                      <i class="fas fa-trash-alt"></i>
+                    <% end %>
+                 <% end %>
+             </div>
+        <p class="date"><%= message.created_at.strftime("%Y年%m月%d日  %H:%M") %></p>
+       <br>
+      <% end %>
+    
+
+
+       <%= form_for @board_message do |f| %>
+           <%= f.hidden_field :user_id %>
+           <%= f.hidden_field :board_id %>
+       <div class="row">
+           <div class="input-group mb-3">
+              <%= f.text_area :content, class: "form-control", placeholder: "コメントする"%>
+              <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon2">
+                    <%= f.submit "送信", class: "btn btn-link comment-btn" %>
+                </span>
+              </div>
+            </div>
+        </div>
+       <% end %>
+      </div>
+    <hr>
+        
+        
+    

@@ -1,0 +1,57 @@
+<div class="each-book-page">
+    <div class="row">
+        <div class="col">
+           <%= image_tag @book.images, class: "book-bg-img" %>
+        </div>
+        <div class="col-6">
+         <div class="book-info">
+           <dl>
+            <div class="book-title">
+                <h3>
+                <%= @book.name %>
+                </h3>
+                <p><%= link_to @book.author, class: "author" %> (著)</p>
+            </div>
+            <div class="box-for-price">
+            <p class="book-price"><strong>￥<%= @book.rental_price %></strong> /１ヶ月 (税込)</p>
+            </div>
+            <dt>商品基本情報：</dt>
+                <div class="book-basic-info">
+                    <dt>購入価格:</dt>
+                    <dd>￥<%= @book.normal_price %>(税込)</dd>
+                    <dt>出版社:</dt>
+                    <dd><%= @book.publisher %></dd>
+                    <dt>ISBN:</dt>
+                    <dd><%= @book.isbn_num %></dd>
+                    <dt>発売日:</dt>
+                    <dd><%= @book.edition %></dd>
+                    <dt>教科書の状態:</dt>
+                    <dd><%= @book.condition %></dd>
+                </div>
+                <dt>概要：</dt>
+                <dd><%= @book.book_details %></dd>
+            <dl>
+          </div>
+        </div> 
+        <div class="col">
+            <div class="card" style="border: solid gray; background: #eee; margin-right:20px;">
+              <div class="card-body">
+                  <div class="pay-header">
+                       <h4>レンタル注文はこちら</h4>
+                       <h5>通常1~2週間程度で発送</h5>
+                       <h6>注意：商品確保が難しい場合は３週間程度でキャンセルとなる場合がございます。</h6>
+                   </div>
+                   <div class="pay-content">
+                       <p class="book-price"><strong>￥<%= @book.rental_price %></strong> /１ヶ月 (税抜)</p>
+                        <div class="col submit_rental">
+                          <button type="button" class="btn btn btn-warning btn-lg btn-block">
+                          <i class="nav-link nav-icon fas fa-shopping-cart fa-behance fa-flip-horizontal fa-lg icon"></i>
+                          レンタルする</button>
+                          <button type="button" class="btn btn btn-light btn-lg btn-block">掲示板で探す</button>
+                        </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+   </div>
+</div>

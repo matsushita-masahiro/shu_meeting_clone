@@ -1,0 +1,14 @@
+<h1>ユーザー一覧</h1>
+<hr>
+<div class="container">
+<% @users.each do |u| %>
+  <% if u.icon? %>
+    <%= image_tag u.icon.url, class: "user-middle-icon" %>
+<% else %>
+    <%= image_tag "/assets/icon.png", class: "user-middle-icon" %>
+<% end %>
+  <p><a href="/users/<%= u.id %>"><%= u.last_name %><%= u.first_name %>さん</a></p>
+  <hr>
+<% end %>
+<a href="/" class="btn btn-info">トップに戻る</a>
+</div>

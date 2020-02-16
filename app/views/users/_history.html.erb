@@ -1,0 +1,11 @@
+<h2>投稿履歴</h2>
+
+<% if @user.boards.present? %>
+    <% @user.boards.each do |board| %>
+      <img src="/assets/post_icon.svg"  width="40" height="40">
+      <a href="/boards/<%= board.id %>"><%= board.title %></a>
+      <hr>
+    <% end %>
+<% else %>
+   <p>まだ<%= current_user.last_name %>さんの投稿はありません。</p>
+<% end %>

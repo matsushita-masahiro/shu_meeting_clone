@@ -1,0 +1,132 @@
+// index
+.book-search-nav > .navbar.navbar-light{
+	height: 55px;
+	margin-bottom: 25px;
+}
+.book-search > .card{
+	margin-left: 20px;
+}
+
+
+.form-check{
+	margin: 0;
+	list-style: none;
+	line-height: 1;
+	float: left;
+}
+
+.search-result-item{
+  border-bottom: solid 3px #eee;
+  cursor: pointer;
+}
+
+a.book-link{
+	width: 350px;
+	color: black;
+}
+.book-link:hover{
+	color: #FFA500;
+    text-decoration: none;
+}
+
+.book-price-small > strong {
+	color:red;
+	font-size: 1.5em;
+}
+
+dd.author:hover{
+	color: #FFA500;
+    text-decoration: none;
+}
+
+dt{
+	float: left;
+	clear: left;
+	margin-right: 0.5em;
+	width: 250px;
+}
+
+dd {
+    float: left ;
+    margin-left: 1em;
+}
+
+
+.book-img {
+   	 float: right;
+     width: 200px ;
+     height: 200px ;
+     margin-left: 20px;
+     margin-bottom:30px;
+}
+
+
+//show
+.each-book-page{
+	margin-top: 20px;
+}
+
+.book-bg-img{
+	float: left;
+	width: 350px;
+	height: 350px;
+}
+
+.book-title{
+	border-bottom: solid 3px gray;
+}
+
+.book-price{
+	// margin-top:40px;S
+}
+
+.book-price > strong{
+	font-size: 2em;
+	color:red;
+}
+.box-for-price{
+	margin-top:30px;
+}
+
+.book-info{
+	line-height: 1.5;
+}
+.book-basic-info > dt{
+	font-weight: normal;
+}
+
+
+.col.submit_rental{
+	margin-top: 30px;
+	margin-right: 40px;
+}
+
+button.btn{
+	margin-bottom:25px;
+}
+
+.book-info{
+	padding: 0;
+}
+
+.pay-header{
+	padding-bottom: 20px;
+	border-bottom: solid 2px gray;
+}
+
+.pay-header > h6{
+	font-size: 12px;
+	color: red;
+}
+
+.pay-content{
+	text-align:center;
+	margin-top: 40px;
+}
+
+
+
+
+
+
+

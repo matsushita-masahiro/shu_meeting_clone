@@ -1,0 +1,8 @@
+<h1>メッセージ一覧</h1>
+<hr>
+<% @messages.each do |m| %>
+  <p><%= m.name %>さんからのメッセージ</p>
+  <p><%= m.send_to %>さん宛</p>
+  <p><%= m.content %></p>
+  <hr>
+<% end %>

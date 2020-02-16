@@ -1,0 +1,102 @@
+
+<div class="row no-gutters">
+  <div class="col-sm">
+     <% if @board.images? %>
+          <% @board.images.each do |image| %>
+            <%= image_tag image, class: "card-images" %>
+          <% end %>
+     <% else %>
+          <%= image_tag "/assets/default-book.png", class: "card-img-top board-images" %>
+     <% end %>
+  </div>
+  <div class="col-sm">
+        <div class="card small-card">
+              <table>
+                <tbody>
+                    <tr class="tr-card">
+                    <th class="th-card">出品者</th>
+                    <td class="td-card">
+                     <div class="row">
+                        <div class="icon-box">
+                        <% if @user.icon? %>
+                           <%= image_tag @user.icon.url, class: "user-small-icon" %>
+                        <% else %>
+                           <%= image_tag "/assets/icon.png", class: "user-icon", style:"width:40px; height:40px" %>
+                        <% end %>
+                        </div>
+                        <a class="icon-url" href="/users/<%= @board.user_id %>"><%= User.find(@board.user_id).username %></a>
+                     </div>
+                    </td>
+                    </tr>
+                    <tr class="tr-card">
+                        <th class="th-card">教科書名</th>
+                        <td class="td-card"><%= @board.book_name %></td>
+                    </tr>
+                    <tr class="tr-card">
+                        <th class="th-card">筆者名</th>
+                        <td class="td-card"><%= @board.author %></td>
+                    </tr>
+                    <tr class="tr-card">
+                        <th class="th-card">ISBN</th>
+                        <td class="td-card"><%= @board.isbn_num %></td>
+                    </tr>
+                    <tr class="tr-card">
+                        <th class="th-card">カテゴリー</th>
+                        <td class="td-card"><%= @board.category %></td>
+                    </tr>
+                    <tr class="tr-card">
+                        <th class="th-card">本の状態</th>
+                        <td class="td-card"><%= @board.condition %></td>
+                    </tr>
+                    <tr class="tr-card">
+                        <th class="th-card">貸出期限</th>
+                        <td class="td-card"><%= @board.available_period %></td>
+                    </tr>
+                  </tbody>
+               </table>
+          </div>
+      </div>
+  </div>
+  <div class="item-price-box">
+    <span class="item-price-bold">￥<%= @board.decide_price %></span>
+    <span class="item-price-term">/月</span>
+    <span class="item-price-fee">税込み･送料別</span>
+  </div>
+  
+    
+
+        
+     
+      
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   

@@ -1,0 +1,19 @@
+
+<% @boards.each do |b| %>
+  <div class="card each-board">
+   <a href="/boards/<%= b.id %>"></a>
+    <div class="item-price-tag">
+       <% if b.images? %>
+        <% b.images.each do |image| %>
+          <%= image_tag image, class: "card-images" %>
+        <% end %>
+       <% else %>
+        <%= image_tag "/assets/default-book.png", class: "card-img-top board-images" %>
+       <% end %>
+       <p>￥<%= b.decide_price %></p>
+     </div>
+      <div class="card-body each-board">
+       <h5 class="card-title each-board"><p><%= b.book_name %></p>
+      </div>
+   </div>
+<% end %>

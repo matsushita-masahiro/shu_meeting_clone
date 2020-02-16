@@ -53,3 +53,12 @@ gem 'fog-aws'
 gem 'carrierwave'
 gem 'railties'
 gem 'jp_prefecture'
+gem 'jquery-rails'
+gem 'seed-fu', '~> 2.3'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+group :development do
+  gem 'letter_opener_web', '~> 1.0'
+end
+gem 'devise-i18n'
+gem 'devise-i18n-views'

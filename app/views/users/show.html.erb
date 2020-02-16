@@ -1,2 +1,91 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+<% if user_signed_in? %> 
+  <% if @user == current_user %>
+  <h2>
+    　<!--current_user.last_name %>さん、こんにちは！-->
+  </h2> 
+   <% end %>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-lg-4">
+          <div class="card bg-light">
+           <div class="card-header">アカウント情報</div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-6 col-xs-6">
+                  <div class="icon-box">
+                  　　<% if @user.icon? %>
+                    　  　  <%= link_to edit_user_registration_path do %>
+                            <%= image_tag @user.icon.url, class: "user-icon" %>
+                          <% end %>
+                      <% else %>
+                          <%= link_to edit_user_registration_path do %>
+                            <%= image_tag "/assets/icon.png", class: "user-icon", id: "preview"%>
+                          <% end %>
+                     <% end %>
+                     </div>
+                  </div>
+                <div class="col-sm-6 col-xs-6">
+                  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link btn-light my-menu" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">プロフィール<i class="fas fa-chevron-right"></i></a>
+                    <a class="nav-link btn-light my-menu" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">お気に入り<i class="fas fa-chevron-right"></i></a>
+                    <a class="nav-link btn-light my-menu" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">投稿履歴<i class="fas fa-chevron-right"></i></a>
+                    <a class="nav-link btn-light my-menu" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">レンタル履歴<i class="fas fa-chevron-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <div class="col-xs-12 col-lg-8">
+         <div class="tab-content" id="v-pills-tabContent">
+          <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+            <%= render "users/profile"  %>
+          </div>
+          <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <%= render "users/favorites"  %>
+          </div>
+          <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+            <%= render "users/history"  %>
+          </div>
+          <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+            <%= render "users/rental"  %>
+          </div>
+         </div>
+        </div>
+        
+        
+        <%= form_for @room do |f| %>
+        <%= fields_for @entry do |e| %>
+        <%= e.hidden_field :user_id, :value => @user.id %>
+        
+        <% if @user == current_user %>
+        <a href="/rooms" class="btn btn-info">チャット一覧を見る</a>
+        <% else %>
+        <%= f.submit "チャットを始める", :class => "btn btn-warning" %>
+        <% end %>
+       
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  
+  
+<% else %>
+ 
+  <h2> 現在ログインしていません </h2>
+  <%= link_to "新規登録", new_user_registration_path, class: 'post' %> <!-- 新規登録画面に移行する -->
+  <%= link_to "ログイン", new_user_session_path, class: 
+  'post' %> <!-- ログイン画面に移行する -->
+<% end %>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+ <h2 style="color:red">アカウントの削除</h2>
+ <div class="row justify-content-center">
+  <div class="col-6">
+　　<p>退会されるのは、とても残念です。問題などにつきまして、テキストアがお力になれることがありましたら、アカウントを削除する前に<%= link_to 'お問い合わせ', inquiries_path %>ください。</p>
+　　
+　　<div class="row justify-content-center">
+　　<%= button_to "アカウントを削除する", registration_path(resource_name), class: "btn btn-danger", data: { confirm: "本当にアカウントを消してもよろしいですか？" }, method: :delete %></p>
+　</div>
+　</div>
+　</div>

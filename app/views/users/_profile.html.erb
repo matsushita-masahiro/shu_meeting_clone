@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-body">
+    <%= link_to '会員情報の編集', edit_user_registration_path, class: "link" %>
+ <table class="profile">
+   <tr>
+      <th>お名前 </th>
+      <td><%= @user.last_name %> <%= @user.first_name %></td>
+   </tr>
+   <tr>
+      <th>お名前(ひらがな)</th>
+    　<td><%= @user.last_name_kana %> <%= @user.first_name_kana %></td>
+  </tr>
+  <tr>
+      <th>性別</th>
+      <td><%= @user.gender %></td>
+  </tr>
+  <% if @user == current_user %>
+  <tr>
+      <th>メールアドレス</th>
+      <td><%= @user.email %></td>
+  </tr>
+  <tr>
+      <th>住所</th>
+      <td>
+        <label>郵便番号：</label><%= @user.postcode %></br><hr>
+        <label>都道府県：</label><%= @user.prefecture_name %></br>
+        <label>市町村区：</label><%= @user.address_city %></br>
+        <label>番地名：</label><%= @user.address_street %><br>
+        <% if @user.address_building.present? %>
+        <label>ビル名：</label><%= @user.address_building %></br>
+        <% end %>
+      </td>
+　</tr>
+　<tr>
+      <th>大学情報</th>
+      <td>
+        大学名：<%= @user.college %>
+        学部名：<%= @user.major %>
+      </td>
+　</tr>
+　<% end %>
+ </table>
+  <%= link_to '会員情報の削除', delete_path, class: "link", style: "color:red" %>
+ </div>
+</div> 
+  

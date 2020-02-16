@@ -1,0 +1,65 @@
+<div class="page-background">
+<div class="container"> 
+ <div class="row justify-content-left">
+    <div class="col">
+      <%= form_tag "/boards",  :method => "get" do %>
+         <div class="search-form">
+            <input name="search" type="text" placeholder="教科書名･著者名･ISBNを入力" class="form-control form-control-lg" >
+            <input type="submit" class="btn btn-info" value="さがす">
+          </div>
+    <% end %>
+    </div>
+    
+  </div>
+   
+
+  <h2>人気の教科書カテゴリー</h2>
+  <div class="cetegory">
+    <span><a href="#categ-1" class="badge badge-pill badge-light">経済/経営</a></span>
+    <span><a href="#categ-2" class="badge badge-pill badge-light">文学/言語</a></span>
+    <span><a href="#categ-3" class="badge badge-pill badge-light">情報/通信</a></span>
+    <span><a href="#categ-4" class="badge badge-pill badge-light">教育/心理</a></span>
+  </div>
+  <div class="new-post">
+    <a href="/boards/new">
+         <img src="/assets/new_post.png">
+    </a>
+ </div>
+</div>
+
+<div class="board">
+
+
+<div class="container board-post">
+  <% @boards.each do |b| %>
+
+ <h4 class="category-title" id="categ-1">経済/経営</h4>
+   <% if b.category == "経済/経営" %>
+     <%= render "boards/each-board"  %>
+   <% end %>
+ <hr>
+ <h4 class="category-title" id="categ-2">文学/言語</h4>
+   <% if b.category == "文学/言語" %>
+     <%= render "boards/each-board"  %>
+   <% end %>
+ <hr>
+ <h4 class="category-title" id="categ-3">情報/通信</h4>
+   <% if b.category == "情報/通信" %>
+     <%= render "boards/each-board"  %>
+   <% end %>
+ <hr>
+ <h4 class="category-title" id="categ-4">教育/心理</h4>
+   <% if b.category == "教育/心理" %>
+     <%= render "boards/each-board"  %>
+   <% end %>
+ <hr>
+<% end %>
+
+
+</div>
+
+
+</div>
+<hr>
+</div>
+</div>

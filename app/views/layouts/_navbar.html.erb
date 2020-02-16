@@ -1,0 +1,47 @@
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+      
+      
+      <div class=container>
+       <ul class="nav justify-content-left">
+           <!--<div class="col-9">-->
+         
+        <li class="nav-item my-2">
+            <%= link_to '教科書を探す', boards_path, class: "nav-link"%>
+        </li>
+        
+        <li class="nav-item my-2">
+            <%= link_to '教科書を出品する', "/boards/new" , class: "nav-link"%>
+        </li>
+        
+        <!--<li class="nav-item my-2">-->
+        <!--    <%= link_to '教科書をさがす', books_path , class: "nav-link"%>-->
+        <!--</li>-->
+        
+        <li class="nav-item my-2">
+           <%= link_to 'お問い合わせ', new_inquiry_path, class: "nav-link" %>
+        </li>
+        <% unless user_signed_in? %>
+        <li class="nav-item my-2">
+            <%= link_to '無料会員登録', new_user_registration_path, class: "nav-link"%>
+        </li> 
+        <li class="nav-item my-2">
+            <%= link_to 'ログイン', new_user_session_path, class: "nav-link" %>
+        </li>
+        <% else %>
+        <li class="nav-item my-2">
+          <%= link_to 'ログアウト', destroy_user_session_path, class: "nav-link", :method => "delete" %>
+        </li>
+        <% end %>
+        
+      </ul>
+      </div>
+        
+        
+        
+        
+  </div>
+</nav>

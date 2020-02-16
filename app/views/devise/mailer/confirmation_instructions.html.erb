@@ -1,5 +1,13 @@
-<p>Welcome <%= @email %>!</p>
+<p><%= @name %>様、この度はテキストアへの会員登録誠にありがとうございます。<br>
+<strong>会員登録はまだ完了していません。</strong>
+</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>以下のURLにアクセスし、引き続き会員登録をお願いします。<br>
+<%= link_to '会員登録はこちら', confirmation_url(@resource, confirmation_token: @token) %></p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p>※上記のURLの有効期限は1時間いないです。</br>
+  有効期限を過ぎますと、このURLからの会員登録のお手続きができなくなります。<br>
+  
+このメールに関して、心当たりのない方は
+ 

@@ -1,3 +1,36 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-icon{
+    display:flex;
+    margin: 0 auto;
+    margin-bottom:20px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border:1px solid rgb(0,136,157);
+}
+
+.user-small-icon{
+    display:flex;
+    margin-right:5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border:1px solid rgb(0,136,157);
+}
+
+.fa-chevron-right{
+    font-size:12px;
+    color:rgb(0,136,157);
+    padding: 5px 10px;
+}
+.nav-link.my-menu:hover{
+    // background: rgb(0,136,157);
+    // opacity:0.7;
+    font-color:orange;
+}
+
+.nav-link.active.my-menu{
+    background: rgb(0,136,157);
+    font:white;
+}
+

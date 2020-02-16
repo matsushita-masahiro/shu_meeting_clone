@@ -1,0 +1,101 @@
+<div class="mx-auto">
+ <div class="progress">
+    <div class="progress-bar bg-info" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75 ％</div>
+     </div>
+    　<h2>内容確認画面</h2>
+        <div class="card bg-light ">
+         <div class="col-14">
+          <div class="card-header text-center">アカウント情報</div>
+          <div class="row justify-content-center">
+            <div class="col-12">
+            <%= form_for @user, url: {action: "complete"} do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+        　　<table>
+            <tr>
+              <th>お名前</th>
+              <td><%= @user.last_name %>　<%= @user.first_name %></td>
+              <%= f.hidden_field :last_name, :value => @user.last_name %>
+              <%= f.hidden_field :first_name, :value => @user.first_name %>
+            </tr>
+            <tr>
+              <th>お名前(フリガナ)</th>
+              <td><%= @user.last_name_kana %>　<%= @user.first_name_kana %></td>
+              <%= f.hidden_field :last_name_kana, :value => @user.last_name_kana %>
+              <%= f.hidden_field :first_name_kana, :value => @user.first_name_kana %>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= @user.email %></td>
+              <%= f.hidden_field :email, :value => @user.email %>
+            </tr>
+            <tr>
+              <th>性別</th>
+              <td><%= @user.gender %></td>
+              <%= f.hidden_field :gender, :value => @user.gender %>
+            </tr>
+            <tr>
+              <th>住所</th>
+              <td>
+                <%= @user.postcode %>
+                <%= f.hidden_field :postcode, :value => @user.postcode %>
+                <%= @user.prefecture_name %>
+                <%= f.hidden_field :prefecture_name, :value => @user.prefecture_name %>
+                <%= @user.address_city %>
+                <%= f.hidden_field :address_city, :value => @user.address_city %>
+                <%= @user.address_street %>
+                <%= f.hidden_field :address_street, :value => @user.address_street %>
+                <%= @user.address_building %>
+                <%= f.hidden_field :address_building, :value => @user.address_building %>
+              </td>
+            </tr>
+            <tr>
+              <th>大学情報</th>
+              <td>
+                <%= @user.college %>
+                <%= f.hidden_field :college, :value => @user.college %>
+                <%= @user.major %>
+                <%= f.hidden_field :major, :value => @user.major %>
+              </td>
+            </tr>
+          </table>
+         <div class="card-footer">
+          <div class="form-row justify-content-center">
+            <p>個人情報の取り扱いについて</p>
+            <div class="overflow-auto" style="width:600px; height:150px;">
+             <p class="small-desc">株式会社テキストRentalは、お客様の個人情報等の取扱いについて、下記のとおりお約束いたします。</br>
+             １．	個人情報の利用目的について</br>
+              株式会社テキストRentalは、お客様からご提示いただいた名前、住所、電話番号、性別その他のお客様個人に関わる情報（以下、「個人情報等」といいます）を、お客様へ適した商品やサービス、及び会報誌・ダイレクトメール等による各種情報のご提供のために利用させていただき、お客様の承諾なく、他の目的には利用いたしません。</br>
+             ２．個人情報の第三者提供について</br>
+              株式会社テキストRentalでお預かりした個人情報等を、以下のいずれかに該当する場合を除き、第三者へ提供、取り扱いを委託することはありません。</br>
+              ➀お客様の事前の承諾を得た場合</br>
+              ➁業務委託会社に対して、お客様に明示した利用目的の達成のために必要な範囲で個人情報等の取扱いを委託する場合<br>
+              ➂法令の定めにより提供を求められた場合</br>
+             ３．個人情報の開示等について</br>
+              株式会社テキストRentalは、個人情報等の開示、変更、削除の求めがあった場合には、お客様ご本人であることをご確認させていただいたうえで、すみやかに対応いたします。</br>
+             </p>
+            </div>
+            <div class="form-check">
+           　 <div clas="row">
+                  <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                  <label class="form-check-label" for="gridCheck" style="margin:0">同意する</label>
+                </div>
+              </div>
+          </div>
+         </div>
+         <div class="form-row justify-content-center">
+          <div class="actions">
+            <%= f.submit "会員情報を登録する", class: "btn btn-info btn-lg btn-block" %>
+          </div>
+         </div>
+        </div>
+　　   <% end %>
+　　</div>
+  </div>
+</div>
+
+      
+ 
+ 
+ 
+ 
+ 

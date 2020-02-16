@@ -1,0 +1,52 @@
+  <div class="container">
+    <div class="row justify-content-between">
+      
+        <a class="navbar-brand" href="/">
+         <img src="/assets/logo.svg" class="logo" alt="テキストRentalアイコン">
+        <strong class="texstore">テキストア
+        </strong>
+        </a>
+         
+     
+       <div class="notices">
+            <% if notice %>
+              <p class = "alert alert-success"><%= notice %></p>
+            <% end %>
+            <% if alert %>
+              <p class = "alert alert-danger"><%= alert %></p>
+            <% end %> 
+        </div>
+
+   
+
+       <div class="row justify-content-right">
+         <div class="row"> 
+          <% if user_signed_in? %>
+                <% if current_user.id == 1 %>
+                      <%= link_to admins_path, class: "my-link", style: "color:#FF9900" do %>
+                      <span>管理者ページ</span>
+                      <% end %>
+                <% end %>
+            <i class="nav-link nav-icon far fa-user icon"></i>
+            <%= link_to user_path(current_user), class: "my-link" do %>
+                <span class="my-link">マイページ</span>
+            <% end %> 
+          <% end %>
+         </div>
+         <!--<div class="row">-->
+         <!-- <i class="nav-link nav-icon fas fa-shopping-cart icon" title="カートを見る"> </i>-->
+         <!--  < link_to "#", class: "my-link" do %>-->
+         <!--     <span class="my-link">カートをみる</span>-->
+         <!--  < end %>-->
+         <!--  </div>-->
+          
+         
+         
+         
+         
+        
+         
+        </div>
+      </div>
+     </div>
+ 

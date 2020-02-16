@@ -1,0 +1,17 @@
+<h1>投稿が完了しました</h1>
+<hr>
+<p>名前：<%= @user.last_name %><%= @user.first_name %>様</p>
+<p>投稿タイトル：<%= @board.title %></p>
+<p>画像：<%= image_tag(@board.images) %></p>
+<p>教科書名：<%= @board.book_name %></p>
+<p>筆者名：<%= @board.author %></p>
+<p>ISBN：<%= @board.isbn_num %></p>
+<p>カテゴリー：<%= @board.category %></p>
+<p>本の状態：<%= @board.condition %></p>
+<p>レンタル金額：<%= @board.decide_price %></p>
+<p>貸し出し期限：<%= @board.available_period %></p>
+<p>概要：<%= @board.remarks %></p>
+
+<hr>
+<a href="/">トップに戻る</a>
+

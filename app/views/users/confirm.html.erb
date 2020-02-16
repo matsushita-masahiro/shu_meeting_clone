@@ -1,0 +1,53 @@
+<div class="mx-auto"style="width: 700px;">
+ <div class="progress">
+    <div class="progress-bar bg-info" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75 ％</div>
+     </div>
+
+<h2>内容確認画面</h2>
+    <div class="card bg-light ">
+      <div class="col-14">
+         <div class="card-header">
+          </div>
+      </div>
+      <!--< form_tag(user_path, method: :get) do %>-->
+      <table>
+        <tr>
+          <th>お名前</th>
+          <td><%= @user.last_name %>　<%= @user.first_name %></td>
+        </tr>
+        <tr>
+          <th>お名前(フリガナ)</th>
+          <td><%= @user.last_name_kana %>　<%= @user.first_name_kana %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th>性別</th>
+          <td><%= @user.gender %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td>
+            <%= @user.postcode %>
+            <%= @user.prefecture_name %>
+            <%= @user.address_city %>
+            <%= @user.address_street %>
+            <%= @user.address_building %>
+          </td>
+        </tr>
+        <tr>
+          <th>大学情報</th>
+          <td>
+            <%= @user.college %>
+            <%= @user.major %>
+          </td>
+        </tr>
+      </table>
+      
+     <input class="btn btn-primary" type="submit" value="Submit">
+ <!--<end %>-->
+
+
+

@@ -1,0 +1,38 @@
+<div class="container inquiry-index">
+<h2>お問合せ一覧</h2>
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th scope="col" style="width: 20%;">名前</th>
+      <th scope="col" style="width: 20%;">メールアドレス</th>
+      <th scope="col" style="width: 30%;">お問合せ</th>
+      <th scope="col" style="width: 30%;">回答</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @inquiries.each do |inquiry| %>
+    <tr>
+      <th scope="row" style="width: 20%;"><%= inquiry.name %></th>
+      <td style="width: 20%;"><%= inquiry.email %></td>
+      <td style="width: 30%;">
+        <%= link_to simple_format(inquiry.content), new_inquiry_answer_path(inquiry.id) %>
+        <!--<inquiry.created_at. %>-->
+        <%= simple_time(inquiry[:created_at])%>
+      </td>
+      <td style="width: 30%;">
+        <% if Answer.find_by(inquiry_id: inquiry.id) %>
+          <% Answer.where(inquiry_id: inquiry.id).each do |answer| %>
+            <%= simple_format(answer.answer) %><br>
+            <%= simple_time(answer.created_at) %><br>
+            =======================<br>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+   <% end %>
+  </tbody>
+</table>
+</div>
+<style>
+  
+</style>

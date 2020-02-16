@@ -1,0 +1,11 @@
+<h1>お問合せ回答作成</h1>
+<p>名前：<%= @inquiry.name %></p>
+<p>メール：<%= @inquiry.email %></p>
+<p>内容：<%= simple_format(@inquiry.content) %></p>
+<hr>
+<h3>回答</h3>
+<%= form_for [@inquiry, @answer] do |a|%>
+ <%= a.hidden_field :inquiry_id, :value => @inquiry.id %>
+ <%= a.text_area :answer %>
+ <%= a.submit "回答する" %>
+<% end %>

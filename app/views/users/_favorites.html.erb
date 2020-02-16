@@ -1,0 +1,11 @@
+<h2>お気に入り</h2>
+
+<% if @user.favboards.present? %>
+    <% @user.favboards.each do |board| %>
+    　    <img src="/assets/heart_icon.svg" width="40" height="40">
+    　    <a href="/boards/<%= board.id %>"><%= board.title %></a>
+     <hr>
+    <% end %>
+<% else %>
+ <p>まだ<%= current_user.last_name %>さんのお気に入りはありません。</p>
+<% end %>

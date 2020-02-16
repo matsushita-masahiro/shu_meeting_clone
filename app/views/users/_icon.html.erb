@@ -1,0 +1,43 @@
+<%= form_for(@user) do |f| %>
+  <div class="field">
+    <%= f.label :icon 'プロフィール画像' %><br>
+    <%= f.file_field :icon, id: "myImage", accept: "image/*" %>
+    <%= f.hidden_field :icon, :value => @user.icon %>
+  </div>
+  
+  
+  <!-- 追加個所 -->
+  <div class="field">
+    <% if @user.icon? %>
+      <%= f.hidden_field :icon, :value => @user.icon %>
+      <%= image_tag @user.icon.url, class: "user-icon" %>
+    </div>
+  <% end %><br>
+    <%= image_tag '/assets/icon.png', class: "user-icon", id: "preview" %>
+  </div>
+  <div class="field">
+    <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+    <% if @user.persisted? && @user.icon? %>
+      <label>
+      <%= f.check_box :remove_image %>
+      画像を削除
+    </label>
+  <% end %>
+  </div>
+  <!-- 追加個所終了 -->
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<script>
+$('#myImage').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $("#preview").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+});
+</script>

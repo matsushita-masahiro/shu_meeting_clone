@@ -1,0 +1,37 @@
+<%= form_for @inquiry, :url => inquiry_confirm_path do |f| %>
+  <div class="page-header">
+    <h2>お問い合わせ</h2>
+  </div>
+  <div class="container">
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+ <div class="row justify-content-center">
+ <div class="col-8">
+  <table class="table">
+    <tr>
+      <th>名前　<span class="badge badge-danger">必須</span></th>
+      <td>
+        <div class="col-8">
+          <%= f.text_field :name, autocomplete: "name", class: "form-control", required: true, placeholder: "例) 山田太郎"%>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>メールアドレス　<span class="badge badge-danger">必須</span></th>
+      <td>
+        <div class="col-8">
+          <%= f.email_field :email, autocomplete: "email", class: "form-control", required: true, placeholder: "例) yamada@gmail.com" %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>内容　<span class="badge badge-danger">必須</span></th>
+      <td><%= f.text_area :content, autocomplete: "content", class: "form-control inquiry-content", required: true, placeholder: "こちらに問い合わせたい詳細について記載してください。" %></td>
+    </tr>
+  </table>
+  <div class="row justify-content-center">
+  <%= f.submit '送信する', class: 'btn btn-info btn-lg' %>
+  </div>
+<% end %>
+</div>
+</div>
+</div>
